@@ -87,6 +87,22 @@
         .link-container a:hover {
             color: #45a049;
         }
+
+        #shareButton {
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #1DA1F2;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #shareButton:hover {
+            background-color: #1A91DA;
+        }
     </style>
 </head>
 <body>
@@ -98,6 +114,7 @@
         </form>
         <div id="output"></div>
         <button id="copyButton" onclick="copyToClipboard()">𝕔𝕠𝕡𝕪</button>
+        <button id="shareButton" onclick="shareTwitter()">𝕥𝕨𝕚𝕥𝕥𝕖𝕣</button>
 
         <div class="link-container">
             Cliでも使えます → <a href="https://github.com/Sigumaa/x" target="_blank">https://github.com/Sigumaa/x</a>
@@ -144,6 +161,15 @@
             tempInput.select();
             document.execCommand("copy");
             document.body.removeChild(tempInput);
+        }
+
+        function shareTwitter() {
+            const result = document.getElementById('output').textContent;
+            const url = 'https://x.shiyui.dev/';
+            const textWithUrl = `${result}\n${url}`;
+            const encodedResult = encodeURIComponent(textWithUrl);
+            const twitterShareURL = `https://twitter.com/intent/tweet?text=${encodedResult}`;
+            window.open(twitterShareURL, '_blank');
         }
     </script>
 
