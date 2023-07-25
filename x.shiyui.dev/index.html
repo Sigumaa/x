@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>𝕔𝕙𝕒𝕣𝕒𝕔𝕥𝕖𝕣 𝕣𝕖𝕡𝕝𝕒𝕔𝕖𝕣</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            resize: vertical;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #output {
+            white-space: pre-line;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #444;
+            color: #fff;
+            text-align: left;
+        }
+
+        #copyButton {
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #copyButton:hover {
+            background-color: #45a049;
+        }
+
+        .link-container {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .link-container a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .link-container a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>𝕔𝕙𝕒𝕣𝕒𝕔𝕥𝕖𝕣 𝕣𝕖𝕡𝕝𝕒𝕔𝕖𝕣</h1>
+        <form id="replaceForm">
+            <label for="inputText">𝕀𝕟𝕡𝕦𝕥</label><br>
+            <textarea id="inputText" rows="4" oninput="replaceCharacters()" placeholder="𝔼𝕟𝕥𝕖𝕣 𝕪𝕠𝕦𝕣 𝕥𝕖𝕩𝕥 𝕙𝕖𝕣𝕖..."></textarea><br>
+        </form>
+        <div id="output"></div>
+        <button id="copyButton" onclick="copyToClipboard()">𝕔𝕠𝕡𝕪</button>
+
+        <div class="link-container">
+            Cliでも使えます → <a href="https://github.com/Sigumaa/x" target="_blank">https://github.com/Sigumaa/x</a>
+        </div>
+    </div>
+    <script>
+        function replaceCharacters() {
+            const inputText = document.getElementById("inputText").value;
+            const result = replaceCharactersJS(inputText);
+            document.getElementById("output").innerText = result;
+        }
+
+        function replaceCharactersJS(input) {
+            const charMap = {
+                'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙', 'i': '𝕚', 'j': '𝕛', 'k': '𝕜',
+                'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡', 'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧',
+                'w': '𝕨', 'x': '𝕩', 'y': '𝕪', 'z': '𝕫', 'A': '𝔸', 'B': '𝔹', 'C': 'ℂ', 'D': '𝔻', 'E': '𝔼', 'F': '𝔽', 'G': '𝔾',
+                'H': 'ℍ', 'I': '𝕀', 'J': '𝕁', 'K': '𝕂', 'L': '𝕃', 'M': '𝕄', 'N': 'ℕ', 'O': '𝕆', 'P': 'ℙ', 'Q': 'ℚ', 'R': 'ℝ',
+                'S': '𝕊', 'T': '𝕋', 'U': '𝕌', 'V': '𝕍', 'W': '𝕎', 'X': '𝕏', 'Y': '𝕐', 'Z': 'ℤ', '0': '𝟘', '1': '𝟙', '2': '𝟚',
+                '3': '𝟛', '4': '𝟜', '5': '𝟝', '6': '𝟞', '7': '𝟟', '8': '𝟠', '9': '𝟡',
+            };
+            let result = "";
+            for (const char of input) {
+                if (charMap[char] !== undefined) {
+                    result += charMap[char];
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        window.onload = function() {
+            replaceCharacters();
+        };
+
+        // Copy to Clipboard
+        function copyToClipboard() {
+            const outputText = document.getElementById("output").innerText;
+            const tempInput = document.createElement("textarea");
+            tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+            tempInput.value = outputText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+        }
+    </script>
+
+</body>
+</html>
